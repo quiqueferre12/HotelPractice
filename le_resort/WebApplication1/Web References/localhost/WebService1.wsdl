@@ -19,6 +19,65 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllReserve">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllReserveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllReserveResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpecificClients">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idn" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpecificClientsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpecificClientsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpecificReserve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idClient" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpecificReserveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpecificReserveResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="HelloWorld">
         <s:complexType />
       </s:element>
@@ -37,6 +96,24 @@
   <wsdl:message name="GetAllClientsSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllClientsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllReserveSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllReserve" />
+  </wsdl:message>
+  <wsdl:message name="GetAllReserveSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllReserveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecificClientsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpecificClients" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecificClientsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpecificClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecificReserveSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpecificReserve" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecificReserveSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpecificReserveResponse" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldSoapIn">
     <wsdl:part name="parameters" element="tns:HelloWorld" />
   </wsdl:message>
@@ -48,6 +125,18 @@
       <wsdl:input message="tns:GetAllClientsSoapIn" />
       <wsdl:output message="tns:GetAllClientsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllReserve">
+      <wsdl:input message="tns:GetAllReserveSoapIn" />
+      <wsdl:output message="tns:GetAllReserveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecificClients">
+      <wsdl:input message="tns:GetSpecificClientsSoapIn" />
+      <wsdl:output message="tns:GetSpecificClientsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecificReserve">
+      <wsdl:input message="tns:GetSpecificReserveSoapIn" />
+      <wsdl:output message="tns:GetSpecificReserveSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
       <wsdl:output message="tns:HelloWorldSoapOut" />
@@ -57,6 +146,33 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllClients">
       <soap:operation soapAction="http://tempuri.org/GetAllClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReserve">
+      <soap:operation soapAction="http://tempuri.org/GetAllReserve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecificClients">
+      <soap:operation soapAction="http://tempuri.org/GetSpecificClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecificReserve">
+      <soap:operation soapAction="http://tempuri.org/GetSpecificReserve" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -78,6 +194,33 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllClients">
       <soap12:operation soapAction="http://tempuri.org/GetAllClients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReserve">
+      <soap12:operation soapAction="http://tempuri.org/GetAllReserve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecificClients">
+      <soap12:operation soapAction="http://tempuri.org/GetSpecificClients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecificReserve">
+      <soap12:operation soapAction="http://tempuri.org/GetSpecificReserve" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

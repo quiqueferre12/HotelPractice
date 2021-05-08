@@ -40,6 +40,54 @@ namespace le_resort
             }
             return dt;
         }
+        [WebMethod]
+        public DataTable GetAllReserve()
+        {
+            string DBpath = Server.MapPath("database.db");
+            DataTable dt = new DataTable();
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;"))
+            {
+                conn.Open();
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM reserve", conn);
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                conn.Close();
+            }
+            return dt;
+        }
+
+        [WebMethod]
+        public DataTable GetSpecificClients(int idn)
+        {
+            string DBpath = Server.MapPath("database.db");
+            DataTable dt = new DataTable();
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;"))
+            {
+                
+                conn.Open();
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM clients Where idClient = " + idn, conn);
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                conn.Close();
+            }
+            return dt;
+        }
+
+        [WebMethod]
+        public DataTable GetSpecificReserve(int idClient)
+        {
+            string DBpath = Server.MapPath("database.db");
+            DataTable dt = new DataTable();
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;"))
+            {
+                conn.Open();
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM reserve Where idClient =' " + idClient + "'", conn);
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                conn.Close();
+            }
+            return dt;
+        }
 
         [WebMethod]
         public string HelloWorld()
