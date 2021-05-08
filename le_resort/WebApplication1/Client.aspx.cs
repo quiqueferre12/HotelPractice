@@ -14,7 +14,7 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Label1.Text = Session["idn"].ToString();
+            Label1.Text = Session["idn"].ToString();
             WebService1 web = new WebService1();
             int idClient = 0;
 

@@ -78,6 +78,48 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="LoginC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idn" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginCResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginRResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="HelloWorld">
         <s:complexType />
       </s:element>
@@ -114,6 +156,18 @@
   <wsdl:message name="GetSpecificReserveSoapOut">
     <wsdl:part name="parameters" element="tns:GetSpecificReserveResponse" />
   </wsdl:message>
+  <wsdl:message name="LoginCSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginC" />
+  </wsdl:message>
+  <wsdl:message name="LoginCSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginCResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginRSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginR" />
+  </wsdl:message>
+  <wsdl:message name="LoginRSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginRResponse" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldSoapIn">
     <wsdl:part name="parameters" element="tns:HelloWorld" />
   </wsdl:message>
@@ -136,6 +190,14 @@
     <wsdl:operation name="GetSpecificReserve">
       <wsdl:input message="tns:GetSpecificReserveSoapIn" />
       <wsdl:output message="tns:GetSpecificReserveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginC">
+      <wsdl:input message="tns:LoginCSoapIn" />
+      <wsdl:output message="tns:LoginCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginR">
+      <wsdl:input message="tns:LoginRSoapIn" />
+      <wsdl:output message="tns:LoginRSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -173,6 +235,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetSpecificReserve">
       <soap:operation soapAction="http://tempuri.org/GetSpecificReserve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginC">
+      <soap:operation soapAction="http://tempuri.org/LoginC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginR">
+      <soap:operation soapAction="http://tempuri.org/LoginR" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -221,6 +301,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetSpecificReserve">
       <soap12:operation soapAction="http://tempuri.org/GetSpecificReserve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginC">
+      <soap12:operation soapAction="http://tempuri.org/LoginC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginR">
+      <soap12:operation soapAction="http://tempuri.org/LoginR" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

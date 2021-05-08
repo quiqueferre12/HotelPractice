@@ -65,7 +65,7 @@ namespace le_resort
             {
                 
                 conn.Open();
-                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM clients Where idClient = " + idn, conn);
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM clients Where idn = " + idn, conn);
                 SQLiteDataReader reader = comm.ExecuteReader();
                 dt.Load(reader);
                 conn.Close();
@@ -90,9 +90,45 @@ namespace le_resort
         }
 
         [WebMethod]
+        public DataTable LoginC(int idn)
+        {
+            DataTable dt = new DataTable();
+            string DBpath = Server.MapPath("database.db");
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM Clients WHERE idn='" + idn + "'", conn);
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+            }
+            return dt;
+        }
+        [WebMethod]
+        public DataTable LoginR(string user)
+        {
+            DataTable dt = new DataTable();
+            string DBpath = Server.MapPath("database.db");
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM receptionist WHERE name ='" + user + "'", conn);
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+            }
+            return dt;
+        }
+
+        [WebMethod]
         public string HelloWorld()
         {
             return "Hello World";
         }
+
     }
 }

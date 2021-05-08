@@ -14,7 +14,7 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["idn"] = "1";
+           /* Session["idn"] = "1";*/
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace WebApplication1
                 TextBox1.Text = dr["idClient"].ToString();
           }*/
             
-           Response.Redirect("Client.aspx");
+           Response.Redirect("Log.aspx");
             
             
 

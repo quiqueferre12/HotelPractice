@@ -73,14 +73,15 @@
     <Content Include="Home.aspx" />
     <Content Include="Client.aspx" />
     <Content Include="Receptionist.aspx" />
+    <Content Include="Log.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\localhost\Reference.map">
+    <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\localhost\WebService1.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="Receptionist.aspx.designer.cs">
       <DependentUpon>Receptionist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Log.aspx.cs">
+      <DependentUpon>Log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Log.aspx.designer.cs">
+      <DependentUpon>Log.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
